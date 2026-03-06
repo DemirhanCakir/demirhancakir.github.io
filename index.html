@@ -1,136 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demirhan Cakir</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <title>CSS Temel Ödevi</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
 
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* HEADER */
 
-    /* ── Navigation ── */
-    nav {
-      background-color: #ffffff;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-    }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #555;
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
 
-    nav a:hover {
-      color: #2563eb;
-    }
+header h2 {
+    margin: 0;
+    font-size: 24px;
+    background-color: #c9b779;
+    border-bottom: 1px solid #60652b;
+}
 
-    /* ── Main content ── */
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 1.5rem;
-    }
+header h3 {
+    margin: 0;
+    font-size: 24px;
+    background-color: #a3c4d7;
+    border-bottom: 1px solid #34637a;
+}
 
-    .intro {
-      max-width: 640px;
-      text-align: center;
-    }
+/* NAV MENU */
 
-    .intro h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #1a1a2e;
-      margin-bottom: 1rem;
-    }
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
 
-    .intro p {
-      font-size: 1.1rem;
-      line-height: 1.75;
-      color: #555;
-      margin-bottom: 2rem;
-    }
+nav ul li {
+    margin-left: 5px;
+}
 
-    .intro a.cta {
-      display: inline-block;
-      background-color: #2563eb;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.65rem 1.75rem;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: background-color 0.2s;
-    }
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 3px;
+}
 
-    .intro a.cta:hover {
-      background-color: #1d4ed8;
-    }
+nav ul li a:hover {
+    color: white;
+    background-color: #0077cc;
+}
 
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 1.25rem 1rem;
-      font-size: 0.85rem;
-      color: #888;
-      border-top: 1px solid #e0e0e0;
-      background-color: #ffffff;
-    }
+nav ul li a.active {
+    color: white;
+    background-color: #6688aa;
+}
 
-    /* ── Responsive ── */
-    @media (max-width: 480px) {
-      .intro h1 {
-        font-size: 1.8rem;
-      }
+/* DESCRIPTION */
 
-      .intro p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+.description {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.description p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.description em {
+    color: #c0392b;
+    font-style: italic;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap: 15px;
+}
+
+/* İKİ SÜTUN */
+
+.content {
+    width: 60%;
+    background-color: #fff2cc;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #c9b779;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 40%;
+    background-color: #d9edf7;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #a3c4d7;
+    box-sizing: border-box;
+}
+
+/* METİN STİLLERİ */
+
+.content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.sidebar p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* GRUP SEÇİCİ */
+
+h1, h2, p {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #ddd;
+    font-style: italic;
+}
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+    <h1>CSS Temel Ödevi</h1>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Ana Sayfa</a></li>
+            <li><a href="#">Hakkında</a></li>
+            <li><a href="#">Hizmetler</a></li>
+            <li><a href="#">İletişim</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <main>
-    <section class="intro" id="home">
-      <h1>Hi, I'm Demirhan Cakir</h1>
-      <p>
-        Welcome to my personal portfolio. I'm a developer passionate about building
-        clean, user-friendly applications. Explore my projects or get in touch!
-      </p>
-      <a class="cta" href="#projects">View Projects</a>
-    </section>
-  </main>
+<section class="description">
+    <p>
+        Modern web geliştirme sürecinde <em>HTML5</em> sayfanın iskeletini oluştururken,
+        <em>CSS3</em> görsel tasarımı ve düzeni şekillendirir. Bu projede temel CSS
+        özelliklerini kullanarak iki sütunlu bir sayfa düzeni hazırladık.
+    </p>
+</section>
 
-  <footer>
-    &copy; 2026 Demirhan Cakir &mdash; Built with ❤️ and plain HTML
-  </footer>
+<main class="container">
+    
+    <div class="content">
+        <header>
+            <h2>İçerik</h2>
+        </header>    
+
+        <p>
+        Web sayfalarında içerik bölümü, kullanıcıya sunulan
+        ana bilgilerin yer aldığı kısımdır. <b>Tipografi</b>,
+        satır yüksekliği ve metin hizalama gibi CSS özellikleri
+        ile okunabilirlik artırılır.
+        </p>
+
+        <p>
+        Flexbox ve inline-block gibi yöntemlerle öğeleri
+        yan yana konumlandırabilir, <b>margin</b> ve <b>padding</b>
+        değerleri ile aralarındaki boşlukları hassas biçimde
+        ayarlayabiliriz.
+        </p>
+    </div>
+
+    <aside class="sidebar">
+        <header>
+            <h3>Yan Menü / Bilgi</h3>
+        </header>
+        
+
+        <p>
+        Yan panel genellikle ek bağlantılar, kategori listeleri
+        veya kısa bilgilendirme notları için kullanılır.
+        Genişliği yüzde değerleriyle ayarlanarak esnek bir
+        düzen elde edilir.
+        </p>
+
+        <p>
+        CSS seçicileri sayesinde bu bölüme özgü yazı tipi
+        boyutu, arka plan rengi ve kenarlık gibi stiller
+        bağımsız olarak tanımlanabilir.
+        </p>
+    </aside>
+
+</main>
+
+<footer>
+    <p>© 2026 CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
+</footer>
 
 </body>
 </html>
