@@ -150,6 +150,65 @@ footer {
     background-color: #ddd;
     font-style: italic;
 }
+
+/* CONTACT FORM */
+
+.contact-container {
+    width: 600px;
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 28px;
+    background-color: #ffffff;
+    border: 1px solid #cfd8dc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.contact-container h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    text-align: center;
+    color: #1f2d3d;
+}
+
+.contact-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #2f3b46;
+}
+
+.contact-container input,
+.contact-container select,
+.contact-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #c8d0d6;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.contact-container textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-container button {
+    background-color: #1678f2;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-container button:hover {
+    background-color: #0f63ca;
+}
     </style>
 </head>
 <body>
@@ -221,6 +280,30 @@ footer {
 <footer>
     <p>© 2026 CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
 </footer>
+
+<div class="contact-container">
+    <h2>İletişim Formu</h2>
+    <form>
+        <label for="full-name">Ad Soyad</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Adınızı ve soyadınızı girin" required>
+
+        <label for="email">E-posta</label>
+        <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+        <label for="subject">Konu</label>
+        <select id="subject" name="subject" required>
+            <option value="">Konu seçin</option>
+            <option value="is-teklifi">İş Teklifi</option>
+            <option value="soru">Soru</option>
+            <option value="geri-bildirim">Geri Bildirim</option>
+        </select>
+
+        <label for="message">Mesaj</label>
+        <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın" required></textarea>
+
+        <button type="submit">Gönder</button>
+    </form>
+</div>
 
 </body>
 </html>
