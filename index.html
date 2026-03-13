@@ -209,6 +209,36 @@ footer {
 .contact-container button:hover {
     background-color: #0f63ca;
 }
+
+.choice-group {
+    border: 1px solid #d9dee3;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    background-color: #f7f9fb;
+}
+
+.choice-group legend {
+    padding: 0 6px;
+    font-weight: bold;
+    color: #2f3b46;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-weight: normal;
+    color: #2f3b46;
+}
+
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
     </style>
 </head>
 <body>
@@ -290,6 +320,39 @@ footer {
         <label for="email">E-posta</label>
         <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
 
+        <fieldset class="choice-group">
+            <legend>İletişim Tercihi:</legend>
+
+            <label class="option-item">
+                <input type="radio" name="contact-preference" value="email" checked>
+                Bana e-posta ile ulaşın
+            </label>
+
+            <label class="option-item">
+                <input type="radio" name="contact-preference" value="phone">
+                Bana telefonla ulaşın
+            </label>
+        </fieldset>
+
+        <fieldset class="choice-group">
+            <legend>İlgi Alanları / Yetenekler:</legend>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="html">
+                HTML
+            </label>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="css">
+                CSS
+            </label>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="algoritma">
+                Algoritma
+            </label>
+        </fieldset>
+
         <label for="subject">Konu</label>
         <select id="subject" name="subject" required>
             <option value="">Konu seçin</option>
@@ -298,10 +361,14 @@ footer {
             <option value="geri-bildirim">Geri Bildirim</option>
         </select>
 
+        <label for="cv-photo">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+        <input type="file" id="cv-photo" name="cv-photo" accept=".pdf,.doc,.docx,image/*">
+
         <label for="message">Mesaj</label>
         <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın" required></textarea>
 
         <button type="submit">Gönder</button>
+        <button type="reset" style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px 20px; cursor: pointer;">Temizle</button>
     </form>
 </div>
 
