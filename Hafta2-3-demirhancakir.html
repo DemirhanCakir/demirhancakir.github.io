@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Temel Ödevi</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 24px;
+    background-color: #c9b779;
+    border-bottom: 1px solid #60652b;
+}
+
+header h3 {
+    margin: 0;
+    font-size: 24px;
+    background-color: #a3c4d7;
+    border-bottom: 1px solid #34637a;
+}
+
+/* NAV MENU */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 3px;
+}
+
+nav ul li a:hover {
+    color: white;
+    background-color: #0077cc;
+}
+
+nav ul li a.active {
+    color: white;
+    background-color: #6688aa;
+}
+
+/* DESCRIPTION */
+
+.description {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.description p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.description em {
+    color: #c0392b;
+    font-style: italic;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap: 15px;
+}
+
+/* İKİ SÜTUN */
+
+.content {
+    width: 60%;
+    background-color: #fff2cc;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #c9b779;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 40%;
+    background-color: #d9edf7;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #a3c4d7;
+    box-sizing: border-box;
+}
+
+/* METİN STİLLERİ */
+
+.content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.sidebar p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* GRUP SEÇİCİ */
+
+h1, h2, p {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #ddd;
+    font-style: italic;
+}
+
+/* CONTACT FORM */
+
+.contact-container {
+    width: 600px;
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 28px;
+    background-color: #ffffff;
+    border: 1px solid #cfd8dc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.contact-container h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    text-align: center;
+    color: #1f2d3d;
+}
+
+.contact-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #2f3b46;
+}
+
+.contact-container input,
+.contact-container select,
+.contact-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #c8d0d6;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.contact-container textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-container button {
+    background-color: #1678f2;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-container button:hover {
+    background-color: #0f63ca;
+}
+
+.choice-group {
+    border: 1px solid #d9dee3;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    background-color: #f7f9fb;
+}
+
+.choice-group legend {
+    padding: 0 6px;
+    font-weight: bold;
+    color: #2f3b46;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-weight: normal;
+    color: #2f3b46;
+}
+
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Temel Ödevi</h1>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Ana Sayfa</a></li>
+            <li><a href="#">Hakkında</a></li>
+            <li><a href="#">Hizmetler</a></li>
+            <li><a href="#">İletişim</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="description">
+    <p>
+        Modern web geliştirme sürecinde <em>HTML5</em> sayfanın iskeletini oluştururken,
+        <em>CSS3</em> görsel tasarımı ve düzeni şekillendirir. Bu projede temel CSS
+        özelliklerini kullanarak iki sütunlu bir sayfa düzeni hazırladık.
+    </p>
+</section>
+
+<main class="container">
+    
+    <div class="content">
+        <header>
+            <h2>İçerik</h2>
+        </header>    
+
+        <p>
+        Web sayfalarında içerik bölümü, kullanıcıya sunulan
+        ana bilgilerin yer aldığı kısımdır. <b>Tipografi</b>,
+        satır yüksekliği ve metin hizalama gibi CSS özellikleri
+        ile okunabilirlik artırılır.
+        </p>
+
+        <p>
+        Flexbox ve inline-block gibi yöntemlerle öğeleri
+        yan yana konumlandırabilir, <b>margin</b> ve <b>padding</b>
+        değerleri ile aralarındaki boşlukları hassas biçimde
+        ayarlayabiliriz.
+        </p>
+    </div>
+
+    <aside class="sidebar">
+        <header>
+            <h3>Yan Menü / Bilgi</h3>
+        </header>
+        
+
+        <p>
+        Yan panel genellikle ek bağlantılar, kategori listeleri
+        veya kısa bilgilendirme notları için kullanılır.
+        Genişliği yüzde değerleriyle ayarlanarak esnek bir
+        düzen elde edilir.
+        </p>
+
+        <p>
+        CSS seçicileri sayesinde bu bölüme özgü yazı tipi
+        boyutu, arka plan rengi ve kenarlık gibi stiller
+        bağımsız olarak tanımlanabilir.
+        </p>
+    </aside>
+
+</main>
+
+<footer>
+    <p>© 2026 CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
+</footer>
+
+<div class="contact-container">
+    <h2>İletişim Formu</h2>
+    <form>
+        <label for="full-name">Ad Soyad</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Adınızı ve soyadınızı girin" required>
+
+        <label for="email">E-posta</label>
+        <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+        <fieldset class="choice-group">
+            <legend>İletişim Tercihi:</legend>
+
+            <label class="option-item">
+                <input type="radio" name="contact-preference" value="email" checked>
+                Bana e-posta ile ulaşın
+            </label>
+
+            <label class="option-item">
+                <input type="radio" name="contact-preference" value="phone">
+                Bana telefonla ulaşın
+            </label>
+        </fieldset>
+
+        <fieldset class="choice-group">
+            <legend>İlgi Alanları / Yetenekler:</legend>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="html">
+                HTML
+            </label>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="css">
+                CSS
+            </label>
+
+            <label class="option-item">
+                <input type="checkbox" name="skills" value="algoritma">
+                Algoritma
+            </label>
+        </fieldset>
+
+        <label for="subject">Konu</label>
+        <select id="subject" name="subject" required>
+            <option value="">Konu seçin</option>
+            <option value="is-teklifi">İş Teklifi</option>
+            <option value="soru">Soru</option>
+            <option value="geri-bildirim">Geri Bildirim</option>
+        </select>
+
+        <label for="cv-photo">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+        <input type="file" id="cv-photo" name="cv-photo" accept=".pdf,.doc,.docx,image/*">
+
+        <label for="message">Mesaj</label>
+        <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın" required></textarea>
+
+        <button type="submit">Gönder</button>
+        <button type="reset" style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px 20px; cursor: pointer;">Temizle</button>
+    </form>
+</div>
+
+</body>
+</html>

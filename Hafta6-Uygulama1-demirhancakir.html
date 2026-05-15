@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Öğrenci Not Hesaplama</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 6px;
+    }
+
+    .form-alani {
+      max-width: 500px;
+    }
+
+    .form-alani input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 6px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-alani input[type="text"]:focus {
+      border-color: #888;
+    }
+
+    .form-alani button {
+      width: 100%;
+      padding: 8px;
+      background-color: #e9e9e9;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    .form-alani button:hover {
+      background-color: #d5d5d5;
+    }
+
+    .sonuc-kutusu {
+      margin-top: 16px;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      padding: 14px 16px;
+      background-color: #f9f9f9;
+      display: none;
+    }
+
+    .sonuc-kutusu .ogrenci-adi {
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .sonuc-kutusu .bilgi {
+      margin-bottom: 3px;
+    }
+
+    .sonuc-kutusu .durum-gecti {
+      color: green;
+    }
+
+    .sonuc-kutusu .durum-kaldi {
+      color: red;
+    }
+
+    .hata {
+      color: red;
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+  <h2>Öğrenci Not Hesaplama</h2>
+
+  <div class="form-alani">
+    <input type="text" id="adSoyad" placeholder="Ad Soyad">
+    <input type="text" id="vize" placeholder="Vize Notu">
+    <input type="text" id="final" placeholder="Final Notu">
+    <button onclick="hesapla()">Hesapla</button>
+    <div class="hata" id="hata">Lütfen tüm alanları doldurun ve geçerli notlar girin (0-100).</div>
+  </div>
+
+  <div class="sonuc-kutusu" id="sonuc">
+    <div class="ogrenci-adi" id="sonucAd"></div>
+    <div class="bilgi" id="sonucOrtalama"></div>
+    <div class="bilgi" id="sonucHarf"></div>
+    <div class="bilgi" id="sonucDurum"></div>
+  </div>
+
+  <script>
+    function harfNotuna(ortalama) {
+      if (ortalama >= 85) return "AA";
+      if (ortalama >= 75) return "BA";
+      if (ortalama >= 70) return "BB";
+      if (ortalama >= 65) return "CB";
+      if (ortalama >= 60) return "CC";
+      if (ortalama >= 55) return "DC";
+      if (ortalama >= 50) return "DD";
+      if (ortalama >= 0) return "FF";
+        return "Geçersiz";
+    }
+
+    function hesapla() {
+      var hataDiv = document.getElementById("hata");
+      var sonucDiv = document.getElementById("sonuc");
+
+      var adSoyad = document.getElementById("adSoyad").value.trim();
+      var vizeStr = document.getElementById("vize").value.trim();
+      var finalStr = document.getElementById("final").value.trim();
+
+      var vize = parseFloat(vizeStr);
+      var finalNot = parseFloat(finalStr);
+
+      if (!adSoyad || isNaN(vize) || isNaN(finalNot) ||
+          vize < 0 || vize > 100 || finalNot < 0 || finalNot > 100) {
+        hataDiv.style.display = "block";
+        sonucDiv.style.display = "none";
+        return;
+      }
+
+      hataDiv.style.display = "none";
+
+      var ortalama = vize * 0.40 + finalNot * 0.60;
+      var harf = harfNotuna(ortalama);
+      var gecti = ortalama >= 50;
+
+      document.getElementById("sonucAd").textContent = adSoyad;
+      document.getElementById("sonucOrtalama").textContent = "Ortalama: " + ortalama.toFixed(2);
+      document.getElementById("sonucHarf").textContent = "Harf Notu: " + harf;
+
+      var durumEl = document.getElementById("sonucDurum");
+      durumEl.textContent = "Durum: " + (gecti ? "Geçti" : "Kaldı");
+      durumEl.className = "bilgi " + (gecti ? "durum-gecti" : "durum-kaldi");
+
+      sonucDiv.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

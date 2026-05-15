@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kampüs Etkinlik Duyurusu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      min-height: 120vh;
+    }
+
+    /* ── FIXED ELEMENT ── */
+    .fixed-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #1a237e;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 100;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .fixed-bar:hover {
+      background: #283593;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 20px 40px;
+    }
+
+    /* ── TITLE AREA ── */
+    .page-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .page-title h1 {
+      font-size: 22px;
+      color: #1a237e;
+    }
+
+    .page-title p {
+      font-size: 14px;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    /* ── CARD CONTAINER (position: relative) ── */
+    .card {
+      position: relative;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 30px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: visible;
+      transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      cursor: default;
+    }
+
+    /* ── BADGE: top-right (position: absolute) ── */
+    .badge-new {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #e53935;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      z-index: 2;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .badge-new:hover {
+      transform: scale(1.1);
+    }
+
+    /* ── BADGE: date (position: absolute) ── */
+    .badge-date {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      background: #e8eaf6;
+      color: #1a237e;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      z-index: 2;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .badge-date:hover {
+      background: #c5cae9;
+    }
+
+    /* ── OVERLAY RIBBON (position: absolute, z-index overlap) ── */
+    .ribbon {
+      position: absolute;
+      bottom: 20px;
+      right: -6px;
+      background: #1a237e;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 14px 6px 10px;
+      border-radius: 4px 0 0 4px;
+      z-index: 3;
+      cursor: pointer;
+      transition: right 0.3s;
+    }
+
+    .ribbon:hover {
+      right: 0;
+    }
+
+    /* Semi-transparent overlay behind ribbon to show z-index layering */
+
+    /* ── CARD CONTENT ── */
+    .card-body {
+      position: relative;
+      top: 40px
+    }
+
+    .card-body h2 {
+      position: absolute;
+      font-size: 20px;
+      color: #1a237e;
+      top: -40px;
+      left: 30px;
+      z-index: 1;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    
+    /* ── REGISTER BUTTON ── */
+    .register-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      padding: 10px 28px;
+      background: #1a237e;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 1;
+      
+    }
+
+    .register-btn:hover {
+      background: #283593;
+      transform: scale(1.04);
+      animation: pulse 2s infinite;
+    }
+
+    .register-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #999;
+      padding-bottom: 20px;
+    }
+
+    footer a {
+      color: #1a237e;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #e53935;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- position: fixed -->
+  <div class="fixed-bar">
+    Kampüs Etkinlik Portalı — Yeni etkinlikler her Pazartesi yayınlanır
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- Title area -->
+    <div class="page-title">
+      <h1>Öğrenci Toplulukları Duyuru Panosu</h1>
+      <p>Aşağıdaki etkinliği inceleyerek kayıt olabilirsiniz.</p>
+    </div>
+
+    <!-- position: relative container -->
+    <div class="card">
+
+      <!-- position: absolute — badge top-right -->
+      <div class="badge-new">YENİ</div>
+
+      <!-- position: absolute — date top-left -->
+      <div class="badge-date">15 Nisan 2026</div>
+
+      <!-- position: absolute — ribbon bottom-right (z-index: 3) -->
+      <div class="ribbon-shadow"></div>
+      <div class="ribbon">Ücretsiz Katılım</div>
+
+      <!-- Card content -->
+      <div class="card-body">
+        <h2>Yapay Zeka ve Gelecek Sempozyumu</h2>
+        <p>
+          Bilgisayar Mühendisliği Topluluğu tarafından düzenlenen bu sempozyumda
+          akademisyenler, sektör temsilcileri ve öğrenciler bir araya gelerek yapay
+          zekanın bugünkü uygulamalarını ve geleceğe dair senaryolarını tartışacak.
+        </p>
+
+        <div class="details">
+          <div class="detail-item">📍 Konferans Salonu A-101</div>
+          <div class="detail-item">🕐 10:00 – 17:00</div>
+          <div class="detail-item">👥 Kapasite: 120 kişi</div>
+        </div>
+
+        <div class="register-btn">Kayıt Ol</div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Ana sayfaya dön: <a href="index.html">index.html</a></p>
+      <p style="margin-top:6px;">© 2026 Üniversite Öğrenci Portalı</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

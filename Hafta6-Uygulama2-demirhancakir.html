@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birim Dönüştürücü</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .kart {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 24px;
+      max-width: 340px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .kart h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .form-grup {
+      margin-bottom: 14px;
+    }
+
+    .form-grup label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .form-grup input[type="text"],
+    .form-grup select {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-grup input[type="text"]:focus,
+    .form-grup select:focus {
+      border-color: #888;
+    }
+
+    .btn-hesapla {
+      width: 100%;
+      padding: 10px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .btn-hesapla:hover {
+      background-color: #1976D2;
+    }
+
+    .sonuc-kutusu {
+      margin-top: 14px;
+      background-color: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
+
+    .hata-kutusu {
+      margin-top: 10px;
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="kart">
+    <h2>Birim Dönüştürücü</h2>
+
+    <div class="form-grup">
+      <label for="deger">Değer Giriniz:</label>
+      <input type="text" id="deger" placeholder="Örn: 50">
+    </div>
+
+    <div class="form-grup">
+      <label for="donusumTipi">Dönüşüm Tipi:</label>
+      <select id="donusumTipi">
+        <optgroup label="Uzunluk">
+          <option value="metre_km">Metre -&gt; Kilometre</option>
+          <option value="km_metre">Kilometre -&gt; Metre</option>
+          <option value="metre_mil">Metre -&gt; Mil</option>
+          <option value="mil_metre">Mil -&gt; Metre</option>
+        </optgroup>
+        <optgroup label="Sıcaklık">
+          <option value="celsius_fahrenheit">Celsius -&gt; Fahrenheit</option>
+          <option value="fahrenheit_celsius">Fahrenheit -&gt; Celsius</option>
+          <option value="celsius_kelvin">Celsius -&gt; Kelvin</option>
+          <option value="kelvin_celsius">Kelvin -&gt; Celsius</option>
+        </optgroup>
+        <optgroup label="Kütle">
+          <option value="kg_gram">Kilogram -&gt; Gram</option>
+          <option value="gram_kg">Gram -&gt; Kilogram</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <button class="btn-hesapla" onclick="hesapla()">Hesapla</button>
+
+    <div class="hata-kutusu" id="hata">Lütfen geçerli bir sayı giriniz.</div>
+    <div class="sonuc-kutusu" id="sonuc"></div>
+  </div>
+
+  <script>
+    function hesapla() {
+      var hataDiv = document.getElementById("hata");
+      var sonucDiv = document.getElementById("sonuc");
+      var degerStr = document.getElementById("deger").value.trim();
+      var tip = document.getElementById("donusumTipi").value;
+
+      var deger = parseFloat(degerStr);
+
+      if (degerStr === "" || isNaN(deger)) {
+        hataDiv.style.display = "block";
+        sonucDiv.style.display = "none";
+        return;
+      }
+
+      hataDiv.style.display = "none";
+
+      var sonuc;
+      var birim = "";
+
+      switch (tip) {
+        case "metre_km":
+          sonuc = deger / 1000;
+          birim = "km";
+          break;
+        case "km_metre":
+          sonuc = deger * 1000;
+          birim = "m";
+          break;
+        case "metre_mil":
+          sonuc = deger / 1609.344;
+          birim = "mil";
+          break;
+        case "mil_metre":
+          sonuc = deger * 1609.344;
+          birim = "m";
+          break;
+        case "celsius_fahrenheit":
+          sonuc = deger * 9 / 5 + 32;
+          birim = "°F";
+          break;
+        case "fahrenheit_celsius":
+          sonuc = (deger - 32) * 5 / 9;
+          birim = "°C";
+          break;
+        case "celsius_kelvin":
+          sonuc = deger + 273.15;
+          birim = "K";
+          break;
+        case "kelvin_celsius":
+          sonuc = deger - 273.15;
+          birim = "°C";
+          break;
+        case "kg_gram":
+          sonuc = deger * 1000;
+          birim = "g";
+          break;
+        case "gram_kg":
+          sonuc = deger / 1000;
+          birim = "kg";
+          break;
+      }
+
+      var sonucFormatli = sonuc % 1 === 0
+        ? sonuc.toLocaleString("tr-TR")
+        : sonuc.toLocaleString("tr-TR", { maximumFractionDigits: 4 });
+
+      sonucDiv.textContent = "Sonuç: " + sonucFormatli + " " + birim;
+      sonucDiv.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
